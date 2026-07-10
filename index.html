@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memory Match Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Memory Game</p>
+        <h1>Memory Match</h1>
+      </div>
+    </header>
+
+    <main class="content">
+      <section id="menu-screen" class="menu-screen" aria-labelledby="menu-title">
+        <div class="menu-panel">
+          <h2 id="menu-title">Choose a Game Mode</h2>
+          <p class="menu-description">Pick a mode to begin. The computer remembers cards it has seen, but it is not perfect.</p>
+          <div class="menu-actions">
+            <button id="btn-human-vs-human" class="menu-button" type="button">Human vs Human</button>
+            <button id="btn-human-vs-computer" class="menu-button" type="button">Human vs Computer</button>
+          </div>
+          <div class="difficulty-panel">
+            <p>Bot difficulty</p>
+            <div class="difficulty-options" role="radiogroup" aria-label="Bot difficulty">
+              <label><input type="radio" name="difficulty" value="easy" /> Easy</label>
+              <label><input type="radio" name="difficulty" value="medium" checked /> Medium</label>
+              <label><input type="radio" name="difficulty" value="hard" /> Hard</label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="game-screen" class="game-screen hidden" aria-live="polite">
+        <div class="game-header">
+          <div class="game-summary">
+            <div class="game-status-card">
+              <span class="label">Mode</span>
+              <strong id="mode-label">Human vs Human</strong>
+            </div>
+            <div class="game-status-card">
+              <span class="label">Current turn</span>
+              <strong id="turn-label">Player 1</strong>
+            </div>
+            <div class="game-status-card">
+              <span class="label">Remaining pairs</span>
+              <strong id="pairs-label">32</strong>
+            </div>
+          </div>
+          <div class="action-bar">
+            <button id="btn-restart" class="control-button" type="button">Restart Game</button>
+            <button id="btn-main-menu" class="control-button secondary" type="button">Main Menu</button>
+          </div>
+        </div>
+
+        <div class="scoreboard" aria-label="Scoreboard">
+          <div class="player-card" id="player-1-card">
+            <span class="player-label" id="player-1-name">Player 1</span>
+            <span class="player-score" id="player-1-score">0</span>
+          </div>
+          <div class="player-card" id="player-2-card">
+            <span class="player-label" id="player-2-name">Player 2</span>
+            <span class="player-score" id="player-2-score">0</span>
+          </div>
+        </div>
+
+        <section class="board-shell" aria-label="Memory card board">
+          <div id="board" class="board-grid"></div>
+        </section>
+
+        <div class="status-bar" aria-live="polite" id="status-bar">Pick two cards to find a match.</div>
+      </section>
+    </main>
+
+    <div id="game-over-overlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="game-over-title">
+      <div class="overlay-panel">
+        <h2 id="game-over-title">Game Over</h2>
+        <p id="game-over-summary">Final scores are ready.</p>
+        <div class="overlay-scores">
+          <div>
+            <span class="overlay-label" id="overlay-player-1-name">Player 1</span>
+            <strong id="overlay-player-1-score">0</strong>
+          </div>
+          <div>
+            <span class="overlay-label" id="overlay-player-2-name">Player 2</span>
+            <strong id="overlay-player-2-score">0</strong>
+          </div>
+        </div>
+        <p class="overlay-winner" id="overlay-winner">Tie Game</p>
+        <div class="overlay-actions">
+          <button id="btn-play-again" class="menu-button" type="button">Play Again</button>
+          <button id="btn-overlay-main-menu" class="menu-button secondary" type="button">Return to Main Menu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
